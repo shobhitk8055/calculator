@@ -6,10 +6,17 @@ interface Props {
   doubleSize?: boolean;
   dropRight?: boolean;
   addBottom?: boolean;
+  orange?: boolean;
 }
 
 function Button(props: Props) {
-  const { text, doubleSize = false, dropRight = false, addBottom = false } = props;
+  const {
+    text,
+    doubleSize,
+    dropRight,
+    addBottom,
+    orange,
+  } = props;
 
   return (
     <div
@@ -18,6 +25,7 @@ function Button(props: Props) {
         doubleSize ? "button-2x" : "",
         dropRight ? "drop-right" : "",
         addBottom ? "add-bottom" : "",
+        orange ? "bg-orange" : ""
       )}
     >
       {text}

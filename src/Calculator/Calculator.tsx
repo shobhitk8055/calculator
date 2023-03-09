@@ -16,30 +16,30 @@ function Calculator(props: Props) {
           <Button dropRight text="C" />
           <Button dropRight text="C" />
           <Button dropRight text="%" />
-          <Button text="/" />
+          <Button orange text="/" />
         </div>
         <div className="row2 d-flex">
           <Button dropRight text="7" />
           <Button dropRight text="8" />
           <Button dropRight text="9" />
-          <Button text="X" />
+          <Button orange text="X" />
         </div>
         <div className="row3 d-flex">
           <Button dropRight text="4" />
           <Button dropRight text="5" />
           <Button dropRight text="6" />
-          <Button text="-" />
+          <Button orange text="-" />
         </div>
         <div className="row3 d-flex">
           <Button dropRight text="1" />
           <Button dropRight text="2" />
           <Button dropRight text="3" />
-          <Button text="+" />
+          <Button orange text="+" />
         </div>
         <div className="row3 d-flex">
           <Button addBottom dropRight doubleSize text="0" />
           <Button addBottom dropRight text="." />
-          <Button addBottom text="=" />
+          <Button orange addBottom text="=" />
         </div>
       </div>
     </div>
