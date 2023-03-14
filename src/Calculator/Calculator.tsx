@@ -99,19 +99,21 @@ function Calculator(props: Props) {
 
     // If it is a plus
     if (keycode === 107 || (e.shiftKey === true && e.keyCode === 187)) {
-      console.log(e.key);
     }
 
     // If it is a minus
     if (keycode === 109 || (e.shiftKey === true && e.keyCode === 189)) {
-      console.log(e.key);
     }
 
     // If it is a multiply
     if (keycode === 106 || (e.shiftKey === true && e.keyCode === 56)) {
-      console.log(e.key);
     }
 
+    // If it is a divide
+    if ([191, 111].includes(keycode)) {
+      console.log(e.key);
+    }
+    
     console.log(e);
   };
   return (
@@ -194,7 +196,7 @@ function Calculator(props: Props) {
             text={<i className="fa-solid fa-equals"></i>}
           />
         </div>
-  </div> 
+      </div>
     </div>
   );
 }
