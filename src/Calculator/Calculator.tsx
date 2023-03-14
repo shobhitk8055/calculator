@@ -61,15 +61,22 @@ function Calculator(props: Props) {
 
   //Set a operation
   const setOperation = (op: string) => () => {
+    if (number && operation && prevNum) {
+      const result = calculate();
+      setPrevNumber(result.toString());
+      setNumber(null);
+      setCurrentOperation(op);
+      return;
+    }
     if (number) {
       const prevNum = number;
       setNumber(null);
+      setPrevNumber(prevNum);
+      setCurrentOperation(op);
       if (operation !== null && prevNum !== null) {
         calculate();
       }
-      setPrevNumber(prevNum);
-      setCurrentOperation(op);
-    } else if(prevNum){
+    } else if (prevNum) {
       setCurrentOperation(op);
     }
     focus();
@@ -84,13 +91,16 @@ function Calculator(props: Props) {
   };
 
   //Calcuation the current operation
-  const calculate = () => {
+  const calculate = (): number => {
     if (number && prevNum && operation) {
       const result = eval(`${rmZero(prevNum)}${operation}${rmZero(number)}`);
       setNumber(result);
       setCurrentOperation(null);
+      setPrevNumber(null);
+      return result;
     }
     focus();
+    return 0;
   };
 
   //When user types from the keyboard
@@ -138,7 +148,7 @@ function Calculator(props: Props) {
       calculate();
     }
   };
-  
+
   return (
     <div className="calculator-box shadow rounded border">
       <div className="display-area">
