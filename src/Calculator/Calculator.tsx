@@ -59,7 +59,7 @@ function Calculator(props: Props) {
     focus();
   };
 
-  //Set a operation 
+  //Set a operation
   const setOperation = (op: string) => () => {
     if (number && operation && prevNum) {
       const result = calculate();
