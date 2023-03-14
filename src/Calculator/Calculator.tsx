@@ -73,16 +73,47 @@ function Calculator(props: Props) {
 
   const calculate = () => {
     if (number && prevNum && operation) {
-
       const result = eval(`${prevNum}${operation}${number}`);
       setNumber(result);
       setCurrentOperation(null);
     }
   };
-  
-  const keyChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
 
-  }
+  const keyChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const keycode = e.keyCode;
+
+    //If it is a number
+    if (
+      e.shiftKey === false &&
+      ((keycode >= 48 && keycode <= 57) ||
+        (keycode >= 96 && keycode <= 105) ||
+        [110, 190].includes(keycode))
+    ) {
+      number ? setNumber(`${number}${e.key}`) : setNumber(e.key);
+    }
+
+    // If it is a backspace
+    if (e.keyCode === 8 && number) {
+      setNumber(number.substring(0, number.length - 1));
+    }
+
+    // If it is a plus
+    if (keycode === 107 || (e.shiftKey === true && e.keyCode === 187)) {
+      console.log(e.key);
+    }
+
+    // If it is a minus
+    if (keycode === 109 || (e.shiftKey === true && e.keyCode === 189)) {
+      console.log(e.key);
+    }
+
+    // If it is a multiply
+    if (keycode === 106 || (e.shiftKey === true && e.keyCode === 56)) {
+      console.log(e.key);
+    }
+
+    console.log(e);
+  };
   return (
     <div className="calculator-box shadow rounded border">
       <div className="display-area">
@@ -93,8 +124,11 @@ function Calculator(props: Props) {
           ref={inputRef}
           className="w-100 input-field"
         />
-        <p className="operation-test">{prevNum} {operation} {number}</p>
+        <p className="operation-test">
+          {prevNum} {operation} {number}
+        </p>
       </div>
+
       <div className="buttons-area ">
         <div className="row1 d-flex">
           <Button dropRight text="C" onClick={clear} />
@@ -160,7 +194,7 @@ function Calculator(props: Props) {
             text={<i className="fa-solid fa-equals"></i>}
           />
         </div>
-      </div>
+  </div> 
     </div>
   );
 }
